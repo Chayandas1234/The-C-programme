@@ -1,54 +1,54 @@
 /*
 Time:20200426 
-1.9 ×Ö·ûÊý×éÀý³Ì:´òÓ¡×î³¤ÎÄ±¾ÐÐ
-´úÂëÂß¼­£º´ÓÖÕ¶Ë¶ÁÈ¡×Ö·û£¬±£´æµ±Ç°ÊäÈë×î³¤×Ö·û²¢Êä³ö 
-ÅÐ¶Ïµ±Ç°×î³¤×Ö·û´®£º ±È½Ï¶ÁÈ¡×Ö·ûºó·µ»ØµÄ×Ö·û´®µ¥¶À£¬
-Èôµ±Ç°³¤¶È´óÓÚ³õÖµ³¤¶È£¬Ôò¸üÐÂ×Ö·û´® 
+1.9 å­—ç¬¦æ•°ç»„ä¾‹ç¨‹:æ‰“å°æœ€é•¿æ–‡æœ¬è¡Œ
+ä»£ç é€»è¾‘ï¼šä»Žç»ˆç«¯è¯»å–å­—ç¬¦ï¼Œä¿å­˜å½“å‰è¾“å…¥æœ€é•¿å­—ç¬¦å¹¶è¾“å‡º 
+åˆ¤æ–­å½“å‰æœ€é•¿å­—ç¬¦ä¸²ï¼š æ¯”è¾ƒè¯»å–å­—ç¬¦åŽè¿”å›žçš„å­—ç¬¦ä¸²å•ç‹¬ï¼Œ
+è‹¥å½“å‰é•¿åº¦å¤§äºŽåˆå€¼é•¿åº¦ï¼Œåˆ™æ›´æ–°å­—ç¬¦ä¸² 
 */
 #include<stdio.h>
-#define MAXLINE 1000	/*×î´óÊä³öÐÐµÄ³¤¶È*/
+#define MAXLINE 1000	/*æœ€å¤§è¾“å‡ºè¡Œçš„é•¿åº¦*/
 
 int getline(char line[], int maxline);
 void copy(char to[], char from[]);
 
-/*´òÓ¡×î³¤ÊäÈëÐÐ*/
+/*æ‰“å°æœ€é•¿è¾“å…¥è¡Œ*/
 
 int main(){
-	int len;	/*ÊäÈëÐÐ³¤¶È*/
-	int max;	/*×î´ó³¤¶È*/
-	char line[MAXLINE];		/*ÊäÈëÐÐ*/
-	char longest[MAXLINE];	/*±£´æ×î³¤µÄ¾ä×Ó*/
+	int len;	/*è¾“å…¥è¡Œé•¿åº¦*/
+	int max;	/*æœ€å¤§é•¿åº¦*/
+	char line[MAXLINE];		/*è¾“å…¥è¡Œ*/
+	char longest[MAXLINE];	/*ä¿å­˜æœ€é•¿çš„å¥å­*/
 	
 	max = 0;
 	while((len = getline(line,MAXLINE)) > 0){
 		printf("len=%d\n",len); 
 		if(len > MAXLINE){
 			//erro
-			printf("Êý×éÒç³ö"); 
+			printf("æ•°ç»„æº¢å‡º"); 
 		}
 		if(len > max){
-			max = len; 	/*¸üÐÂ×î´ó³¤¶È*/
-			copy(longest,line);		/*¸´ÖÆ×î³¤ÐÐÖÁÖ¸¶¨Î»ÖÃ*/
+			max = len; 	/*æ›´æ–°æœ€å¤§é•¿åº¦*/
+			copy(longest,line);		/*å¤åˆ¶æœ€é•¿è¡Œè‡³æŒ‡å®šä½ç½®*/
 		}
-	if(max > 0)	/*´òÓ¡ÊäÈëÐÐ*/
-		printf("%s",longest);	/*°´%s¸ñÊ½´òÓ¡³ö¾ä×Ó*/ 
+	if(max > 0)	/*æ‰“å°è¾“å…¥è¡Œ*/
+		printf("%s",longest);	/*æŒ‰%sæ ¼å¼æ‰“å°å‡ºå¥å­*/ 
 	} 
 	return 0; 
 } 
 
-/*getline:¶Á³öÒ»ÐÐ×Ö·ûÊä³öµ½×Ö·û´®£¬²¢·µ»ØÆä³¤¶È*/
-int getline(char s[],int lim){	/*Ö÷º¯Êý´«µÝµÄÐÎ²ÎÊÇ×Ö·ûÊý×éÃû£¬Í¨¹ý²Ù×÷Êý×éÏÂ±ê¿É¸ü¸ÄÊý×éÔªËØ*/
-	/*¼ÆËã×Ö·û³¤¶È¡¢*/
+/*getline:è¯»å‡ºä¸€è¡Œå­—ç¬¦è¾“å‡ºåˆ°å­—ç¬¦ä¸²ï¼Œå¹¶è¿”å›žå…¶é•¿åº¦*/
+int getline(char s[],int lim){	/*ä¸»å‡½æ•°ä¼ é€’çš„å½¢å‚æ˜¯å­—ç¬¦æ•°ç»„åï¼Œé€šè¿‡æ“ä½œæ•°ç»„ä¸‹æ ‡å¯æ›´æ”¹æ•°ç»„å…ƒç´ */
+	/*è®¡ç®—å­—ç¬¦é•¿åº¦ã€*/
 	int c,i;
 	
-	/*µ±µ¥´ÎÊäÈë×Ö·û´óÓÚMAXLINEÊ±£¬»á×Ô¶¯·ÅÈëÏÂÒ»´ÎÐ´Èë*/ 
+	/*å½“å•æ¬¡è¾“å…¥å­—ç¬¦å¤§äºŽMAXLINEæ—¶ï¼Œä¼šè‡ªåŠ¨æ”¾å…¥ä¸‹ä¸€æ¬¡å†™å…¥*/ 
 	for(i=0;i<lim-1 && (c=getchar())!=EOF && c != '\n';++i)
 		s[i] = c;
-	if(c == '\n'){	/*ÅÐ¶Ï¾ä×ÓÊÇ·ñ»»ÐÐ£¬Èô³öÏÖ»»ÐÐ·ûËµÃ÷Ò»ÐÐ½áÊø*/ 
+	if(c == '\n'){	/*åˆ¤æ–­å¥å­æ˜¯å¦æ¢è¡Œï¼Œè‹¥å‡ºçŽ°æ¢è¡Œç¬¦è¯´æ˜Žä¸€è¡Œç»“æŸ*/ 
 		s[i] = c;
 		++i;
 	} 
-	s[i] = '\0';	/*×Ö·û´®³£Á¿½«ÒÔ×Ö·ûÊý×éÐÎÊ½´æ´¢£¬²¢ÒÔ'\0'±êÖ¾×Ö·û´®µÄ½áÊø*/
+	s[i] = '\0';	/*å­—ç¬¦ä¸²å¸¸é‡å°†ä»¥å­—ç¬¦æ•°ç»„å½¢å¼å­˜å‚¨ï¼Œå¹¶ä»¥'\0'æ ‡å¿—å­—ç¬¦ä¸²çš„ç»“æŸ*/
 
 	return i;
 }
